@@ -1,11 +1,22 @@
-import mongoose from 'mongoose';
-//在 Mongoose 中，所有东西都从一个 Schema 开始。每一个 schema 都映射到一个 MongoDb 的集合，并定义了该集合中的文档的形式。
+const mongoose = require('mongoose');//引用mongoose模块
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-  name: String,
-  username: String,
-  password: String,
-  avatar: String,
-  createTime: String
-}, { versionKey: false });
-module.exports = mongoose.model('user', userSchema);
+	name:String,
+	pass:String,
+	role:String,
+	createTime:Date,
+	lastLogin:Date
+}) 
+userSchema.methods.getUserByName = async function(name){
+	return await this.find({name:name}).exec().catch(function(err){
+		console.log(err)
+	})
+}
+/**
+ * 发布框架生成userModel模型,model第一个参数为model名称
+ */
+const userModel = mongoose.model('user',userSchema);
+
+module.exports = {
+	userModel
+}
