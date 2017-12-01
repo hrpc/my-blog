@@ -3,26 +3,26 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import Login from '@/components/Login'
-import LoginSuccess from '@/components/LoginSuccess.vue'
-
 export default new Router({
-  mode:"history",
-  base: __dirname, 
   routes: [
     {
       path: '/',
-      name: 'Login',
-      component: Login
+      name: 'login',
+      component: resolve => require(['@/components/Login.vue'], resolve)//懒加载
     },
     {
       path: '/loginSuccess',
       name: 'loginSuccess',
-      component: LoginSuccess
+      component: resolve => require(['@/components/LoginSuccess.vue'], resolve)//懒加载
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: resolve => require(['@/components/Register.vue'], resolve)//懒加载
     },
     {
       path: '*',
-      redirect: '/' // 输入其他不存在的地址自动跳回首页
+      redirect:'/'
     }
   ]
 })

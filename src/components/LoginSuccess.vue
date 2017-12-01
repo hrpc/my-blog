@@ -6,12 +6,15 @@
 
 <script>
 export default {
-  name: 'loginSuccess',
+  name: 'index',
   data () {
     return {
-      msg: '登录成功'
+      msg: '欢迎登录'
     }
   }
 }
 </script>
 
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
