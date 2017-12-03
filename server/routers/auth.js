@@ -22,13 +22,27 @@ router.post('/register',async (ctx) => {
 		message:false,
 		data:null
 	}
-	let tip = await auth.addOneUser(ctx.request.body)
-	if(tip){
-		result.message = true
-		result.data = "注册成功"
+	let addInfo
+	//验证用户名是否重复
+	await auth.findUserByName(ctx.request.body.username,function(err,obj){
+		if(err){
+			return console.error(err)
+		}
+		addInfo = obj
+	})
+	//用户不重复
+	if(addInfo.length === 0){
+		await auth.addOneUser(ctx.request.body,function(err,obj){
+			if(err){
+				return console.error(err)
+			}
+			result.message = true
+			result.data = obj
+		})
 	}else{
+		//用户名已存在
 		result.message = false
-		result.data = "注册失败"
+		result.data = '用户名已存在'
 	}
 	ctx.body = result
 })

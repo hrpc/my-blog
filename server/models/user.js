@@ -1,8 +1,8 @@
 const mongoose = require('../db/mongo');//引用mongoose模块
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
-	name:String,
-	pass:String,
+	username:String,
+	password:String,
 	role:String,
 	createTime:Date,
 	lastLogin:Date

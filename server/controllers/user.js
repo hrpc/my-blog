@@ -1,7 +1,7 @@
 const User = require("../models/user")
-
+var that = this
 exports.findUserByName = async function(name,callback){
-	await User.find({name:name},function(err,obj){
+	await User.find({username:name},function(err,obj){
 		if(err){
 			return handleError(err)
 		}
@@ -10,13 +10,11 @@ exports.findUserByName = async function(name,callback){
 }
 //创建新用户
 exports.addOneUser = async function(resisterInfo,callback){
-	let newUser = new User(resisterInfo);
-	let addSucccess = false
-	await newUser.save((err,doc) => {
+	await User.create(resisterInfo,function(err,newUser){
 		if(err){
-			return console.error(err)
+			return handleError(err)
 		}
-		addSucccess = true
+		//添加用户成功
+		callback(err,'注册成功')
 	})
-	return addSucccess
 }

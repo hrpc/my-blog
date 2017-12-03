@@ -21,9 +21,9 @@ if (process.env.NODE_ENV == 'development') {
 	appid ='wxa9b4e660c373cf41';
 }
 if (process.env.NODE_ENV == 'development') {
-	baseUrl = 'http://192.168.2.124:3000';
+	baseUrl = 'http://127.0.0.1:3000';
 	routerMode = 'hash'
-	authUrl = 'http://192.168.2.124:3000';
+	authUrl = 'http://127.0.0.1:3000';
 	regOpen = true;
 } else {
 	baseUrl = '/tour'

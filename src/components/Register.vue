@@ -16,15 +16,14 @@ export default {
       registerInfo:{
       	username:null,
       	password:null,
-      	createTime:new Date()
+      	createTime:null
       }
     }
   },
   methods:{
   	register(){
-  		console.log("alert")
+  		this.registerInfo.createTime = new Date().toLocaleDateString();
   		this.$http.post(this.$domain + '/auth/register',this.registerInfo).then(function(res){
-  			console.log("res")
   			console.log(res)
   		})
   	}
