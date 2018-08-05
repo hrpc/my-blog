@@ -3,7 +3,7 @@
     <h1>{{ msg }}</h1>
   	<input type="text" placeholder="账号" v-model="username"/>
     <input type="password" placeholder="密码" v-model="password"/>
-    <button @click="login">登录</button>
+    <button @click="login">登录asdasdasd</button>
     <button @click="register">注册</button>
   </div>
 </template>
