@@ -9,7 +9,7 @@ export default {
   name: 'index',
   data () {
     return {
-      msg: '欢迎sss登录'
+      msg: '欢迎sss登录asdasdasdasd'
     }
   }
 }
